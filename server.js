@@ -1,9 +1,14 @@
 var http = require('http');
+var url  = require('url');
 
-function start(){
+function start(route){
 	function OnRequest(request, response){
+		var pathname = url.parse(request.url).pathname;
 		response.writeHead(200);
-		response.write('Get it!');
+		response.write('Get it! on '+ pathname);
+
+		route(pathname);
+
 		response.end();
 	}
 
