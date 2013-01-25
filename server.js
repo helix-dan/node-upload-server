@@ -1,13 +1,13 @@
 var http = require('http');
 var url  = require('url');
 
-function start(route){
+function start(route, handle){
 	function OnRequest(request, response){
 		var pathname = url.parse(request.url).pathname;
 		response.writeHead(200);
-		response.write('Get it! on '+ pathname);
-
-		route(pathname);
+		
+		var routeDoSomething = route(handle, pathname);
+		response.write(routeDoSomething);
 
 		response.end();
 	}
