@@ -1,4 +1,4 @@
-var exec = require('child_precess').exec;
+var exec = require('child_process').exec;
 
 function indindex(){
 	console.log("in the index");
@@ -12,6 +12,8 @@ function start(){
 	exec("ls -lah", function (error, stdout, stderr) {
    		content = stdout;
 	});
+
+	return content;
 }
 
 function upload(){
