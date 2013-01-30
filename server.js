@@ -4,12 +4,9 @@ var url  = require('url');
 function start(route, handle){
 	function OnRequest(request, response){
 		var pathname = url.parse(request.url).pathname;
-		response.writeHead(200);
+		console.log("request for " + pathname + " received");
 		
-		var routeDoSomething = route(handle, pathname);
-		response.write(routeDoSomething);
-
-		response.end();
+		route(handle, pathname, response);
 	}
 
 

@@ -1,11 +1,6 @@
 var exec = require('child_process').exec;
 
-function indindex(){
-	console.log("in the index");
-	return "it is index";
-}
-
-function start(){
+function start(response){
 	console.log("start the server");
 	var content = "empty";
 
@@ -16,7 +11,7 @@ function start(){
 	return content;
 }
 
-function upload(){
+function upload(response){
 	console.log("upload the pic");
 	return "it is upload";
 }
