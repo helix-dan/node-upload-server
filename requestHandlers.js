@@ -4,16 +4,21 @@ function start(response){
 	console.log("start the server");
 	var content = "empty";
 
-	exec("ls -lah", function (error, stdout, stderr) {
-   		content = stdout;
-	});
+//	exec("find /", {timeout: 10000, maxBuffer: 20000*1024},
 
-	return content;
+	exec("ls -lah",
+	 function (error, stdout, stderr) {
+   		response.writeHead(200, {"Contect-Type": "text/plain"});
+		response.write(stdout);
+		response.end();
+	});
 }
 
 function upload(response){
 	console.log("upload the pic");
-	return "it is upload";
+	response.writeHead(200, {"Content-Type": "text/plain"});
+	response.write("ready to upload!");
+	response.end();
 }
 
 exports.start = start;
